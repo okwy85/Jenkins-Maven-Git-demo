@@ -1,0 +1,33 @@
+==================UBUNTU AWS INSTANCE====================
+sudo apt-get update
+sudo apt install openjdk-11-jre
+sudo apt-get update
+sudo apt install -y git
+git --version
+sudo apt install -y maven
+sudo apt install tree -y
+sudo apt-get update
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+cd /var
+cd /lib
+mkdir jenkins
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+#copy the public_IP address add port :8080 on your URL
+cat /var/lib/jenkins/secrets/initialAdminPassword
+#click on install suggested plugin
+create account on jenkins
+
+==========JENKINS SET UP ==================
+ log in to Jenkins--->from the dashboard----->manage jenkins------>plugin manager----> maven integration -----> install without restart---->restart after install
+ log back in---->from the dashboard---->manage jenkins---->global tool config
+ click add maven ---->provide name (Apache Maven 3.6.3)---->uncheck install automatically-----> provide path from git bash after running "mvn --version" (/usr/share/maven)
+ 
